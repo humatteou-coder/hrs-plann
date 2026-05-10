@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HSR Planner</title>
+    <meta name="theme-color" content="#0b1220" />
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="brand">
+        <img src="./icon.svg" class="brand-icon" alt="" />
+        <div class="brand-text">
+          <h1>HSR Planner</h1>
+          <p>Banner tracker + calcolatrice Jade/Pity</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="card">
+        <h2>Promemoria</h2>
+        <div class="grid two">
+          <div class="kpi">
+            <div class="kpi-label">Giornaliero</div>
+            <div class="kpi-value">21:00</div>
+            <div class="kpi-sub">Login (90) + Daily (60)</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-label">Settimanale</div>
+            <div class="kpi-value">Domenica</div>
+            <div class="kpi-sub">Simulated Universe / Herta</div>
+          </div>
+        </div>
+        <p class="muted">
+          I promemoria veri si impostano in Google Tasks/Calendar. Questa pagina serve come planner e calcolatrice.
+        </p>
+      </section>
+
+      <section class="card">
+        <div class="row">
+          <h2>Banner Tracker</h2>
+          <button id="export-banners" class="btn ghost" type="button">Esporta JSON</button>
+        </div>
+
+        <form id="banner-form" class="grid three">
+          <label class="field">
+            <span>Nome</span>
+            <input id="banner-name" required placeholder="Es. Silver Wolf" />
+          </label>
+          <label class="field">
+            <span>Inizio</span>
+            <input id="banner-start" type="datetime-local" required />
+          </label>
+          <label class="field">
+            <span>Fine</span>
+            <input id="banner-end" type="datetime-local" required />
+          </label>
+          <div class="actions">
+            <button class="btn" type="submit">Aggiungi</button>
+            <button id="clear-banners" class="btn danger ghost" type="button">Svuota</button>
+          </div>
+        </form>
+
+        <div id="banners-empty" class="empty muted">Nessun banner salvato.</div>
+        <div id="banners-list" class="list"></div>
+      </section>
+
+      <section class="card">
+        <div class="row">
+          <h2>Calcolatrice</h2>
+          <button id="reset-calc" class="btn ghost" type="button">Reset</button>
+        </div>
+
+        <form id="calc-form" class="grid three">
+          <label class="field">
+            <span>Stellar Jade</span>
+            <input id="jade" type="number" min="0" step="1" inputmode="numeric" />
+          </label>
+          <label class="field">
+            <span>Pass speciali</span>
+            <input id="passes" type="number" min="0" step="1" inputmode="numeric" />
+          </label>
+          <label class="field">
+            <span>Pity attuale (0–89)</span>
+            <input id="pity" type="number" min="0" max="89" step="1" inputmode="numeric" />
+          </label>
+          <label class="field checkbox">
+            <input id="guaranteed" type="checkbox" />
+            <span>Garantito (hai già perso il 50/50)</span>
+          </label>
+          <label class="field">
+            <span>Pull che farai (stima prob.)</span>
+            <input id="planned" type="number" min="0" step="1" inputmode="numeric" />
+          </label>
+          <div class="actions">
+            <button class="btn" type="submit">Calcola</button>
+          </div>
+        </form>
+
+        <div id="calc-output" class="grid two"></div>
+        <p class="muted">
+          Probabilità: stima grezza con 0,6% per pull senza soft pity. Serve solo come indicazione.
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer muted">
+      Dati salvati in locale (nel browser) su questo dispositivo.
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
